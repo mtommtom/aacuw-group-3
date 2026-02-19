@@ -91,7 +91,23 @@ def plot_background(df):
     '''
     plot_distributions(df)
     print(df[df['price_usd'].notna()])
+
+    # plot price vs rank
     fig, ax = plt.subplots()
+    df_clean = df[df['price_usd'].notna()]
+    price = df_clean['price_usd']
+    rank = df_clean['rank']
+    ax.scatter(price, rank)
+    fig.savefig('plot/price_vs_rank.png')
+
+
+    # plot price vs passmark-gd3_mark
+    fig, ax = plt.subplots()
+    df_clean = df[df['price_usd'].notna()]
+    price = df_clean['price_usd']
+    rank = df_clean['pasmark_gd3_mark']
+    ax.scatter(price, rank)
+    fig.savefig('plot/price_vs_pasmark.png')
 
 
 
